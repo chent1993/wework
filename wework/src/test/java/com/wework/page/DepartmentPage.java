@@ -17,7 +17,6 @@ public class DepartmentPage extends BasePage{
         return this;
     }
     public void delete(String dempartName){
-        //findElement(By.linkText(dempartName),10).click();
         WebElement element = driver.findElement(By.linkText(dempartName));
         (new Actions(driver)).moveToElement(element).build().perform();
         findElement(By.xpath("//a[text()='"+dempartName+"']//following-sibling::span")).click();
@@ -26,7 +25,8 @@ public class DepartmentPage extends BasePage{
     }
 
     public void up(String dempartName){
-        findElement(By.linkText(dempartName),15).click();
+        WebElement element = driver.findElement(By.linkText(dempartName));
+        (new Actions(driver)).moveToElement(element).build().perform();
         findElement(By.xpath("//a[text()='"+dempartName+"']//following-sibling::span")).click();
         findElement(By.linkText("上移")).click();
     }
