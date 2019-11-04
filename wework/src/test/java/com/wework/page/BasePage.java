@@ -27,19 +27,10 @@ public class BasePage {
 
     public void quit(){
         try {
-            Thread.sleep(50000);
+            Thread.sleep(10000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
         driver.close();
-    }
-
-    public void demo(){
-        WebElement element = (WebElement) ((JavascriptExecutor)driver).executeScript("return $('.cheese')[0]");
-
-        Select select = new Select(driver.findElement(By.tagName("select")));
-        select.deselectAll();
-        select.selectByVisibleText("Edam");
-
     }
 }

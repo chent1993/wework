@@ -33,7 +33,11 @@ public class TestDepartment {
     }
     @Test
     public void up(){
-        app.toDepartment().up("测试一部");
+        String departName = "测试一部";
+        int old = app.toDepartment().getPosition(departName);
+        app.toDepartment().up(departName);
+        assertThat(app.toDepartment().getPosition(departName),equalTo(old-1));
+
     }
     @Test
     public void down(){

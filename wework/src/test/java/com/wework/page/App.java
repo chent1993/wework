@@ -20,8 +20,8 @@ public class App extends BasePage{
         driver.get(url);
         driver.manage().window().maximize();
         findElement(By.linkText("企业登录")).click();
-        driver.manage().addCookie(new Cookie("wwrtx.sid","8Wyvf7O-Vo5BZXx8PfNNNBSqZtligvbfWGsityKwzI7fHgqhLOSvZe-aNRM47PaK"));
-        driver.manage().addCookie(new Cookie("wwrtx.refid","1903228024922487"));
+        driver.manage().addCookie(new Cookie("wwrtx.sid","8Wyvf7O-Vo5BZXx8PfNNNNcp_56nOPa87ArYGRUyZgaYfqtIaXxb3N27edlpWH5S"));
+        driver.manage().addCookie(new Cookie("wwrtx.refid","19032280243565830"));
         driver.navigate().refresh();
         return this;
     }

@@ -5,6 +5,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 
 import java.util.ArrayList;
+import java.util.EmptyStackException;
 import java.util.List;
 
 public class DepartmentPage extends BasePage{
@@ -31,17 +32,23 @@ public class DepartmentPage extends BasePage{
         findElement(By.linkText("上移")).click();
     }
     public void down(String dempartName){
-        findElement(By.linkText(dempartName),15).click();
+        WebElement element = driver.findElement(By.linkText(dempartName));
+        (new Actions(driver)).moveToElement(element).build().perform();
+        //findElement(By.linkText(dempartName),15).click();
         findElement(By.xpath("//a[text()='"+dempartName+"']//following-sibling::span")).click();
         findElement(By.linkText("下移")).click();
     }
-    public void  getList(){
-        List<String> list=new ArrayList<String>();
-       // driver.findElements(By.xpath("//ul[@role='treeitem']"))
-        List<WebElement>  elements = driver.findElements(By.cssSelector("[role='treeitem']"));
-        for (WebElement element:elements){
-            //element.getText()
+    public int getPosition(String departName){
+        waitClickable(By.xpath("//ul[@class='jstree-children']/li"),15);
+        List<WebElement>  elements = driver.findElements(By.xpath("//ul[@class='jstree-children']/li"));
+        int position=-1;
+
+        for (int i=0;i< elements.size();i++ ) {
+            if (departName.equals( elements.get(i).getText().trim())){//包含空格
+                position = i+1;
+            }
         }
+        return position;
     }
     public String update(String oldname,String newname){
         findElement(By.id("memberSearchInput"),10).sendKeys(oldname);
