@@ -18,6 +18,9 @@ public class TestMaterial {
 
     }
 
+    /**
+     * 上传图片
+     */
     @Test
     public void upload(){
         String file = "D:\\girl.jpg";
@@ -25,8 +28,17 @@ public class TestMaterial {
         int  num = app.toMaterial().upload(file);
         assertThat(num,equalTo(old+1));
     }
+
+    /**
+     * 图文
+     */
+    @Test
+    public void imageText(){
+        String file = "D:\\girl.jpg";
+        app.toMaterial().ImageText("标题","图文内容",file,file);
+    }
     @AfterClass
     public static void  afterAll(){
-        app.quit();
+      //  app.quit();
     }
 }
